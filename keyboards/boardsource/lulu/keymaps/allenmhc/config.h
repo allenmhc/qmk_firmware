@@ -29,6 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS
+#define ONESHOT_TAP_TOGGLE 10
+#define ONESHOT_TIMEOUT 500
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_SLEEP

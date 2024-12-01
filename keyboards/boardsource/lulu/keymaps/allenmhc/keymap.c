@@ -29,43 +29,39 @@ enum custom_keycodes {
 
 #define RAISE TT(_RAISE)
 #define LOWER TT(_LOWER)
-#define MT_UP MT(MOD_RGUI, KC_UP)
-#define MT_DOWN MT(MOD_RALT, KC_DOWN)
-#define MT_LEFT MT(MOD_LALT, KC_LEFT)
-#define MT_RGHT MT(MOD_LGUI, KC_RGHT)
-#define LT_CAPSHY LT(0, KC_LCTL)
+#define OSM_SFT OSM(MOD_LSFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
 /* QWERTY
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  ]   |
+ * | Grave|   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  ]   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  [   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |CapsHy|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
+ * | Caps |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|   -   |    |   =   |------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |Enter |
+ * | Left |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | Right|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | RAISE| LAlt | LGUI | /BackSP /       \Space \  | RGUI | RAlt | LOWER|
- *                   |      | Left | Right|/       /         \      \ |  Up  | Down |      |
+ *                   | RAISE|  Up  | Shift | /BackSP /       \Space \  | Enter| Down | LOWER|
+ *                   |      |      |       |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 
  [_QWERTY] = LAYOUT(
-  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RBRC,
+  QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RBRC,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-  LT_CAPSHY,KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOTE,
-  KC_LSFT,  CKC_Z,  CKC_X,   CKC_C,   CKC_V,   KC_B, KC_MINS,   KC_EQL,  KC_N,    CKC_M,   CKC_COMM,CKC_DOT, CKC_SLSH,KC_ENT,
-                            RAISE, MT_LEFT, MT_RGHT, KC_BSPC,   KC_SPC,  MT_UP,   MT_DOWN, LOWER
+  KC_CAPS,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOTE,
+  KC_LEFT,  CKC_Z,  CKC_X,   CKC_C,   CKC_V,   KC_B, KC_MINS,   KC_EQL,  KC_N,    CKC_M,   CKC_COMM,CKC_DOT, CKC_SLSH,KC_RIGHT,
+                             RAISE,   KC_UP,OSM_SFT, KC_BSPC,   KC_SPC,  KC_ENT,  KC_DOWN, LOWER
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | Home |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |  Up  |      |      |      |                    |      |      |      |  Up  |      | End  |
+ * |      |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   *  |  *   |   (  |   )  | End  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      | Left | Down | Right|      |      |-------.    ,-------|      |      | Left | Down | Right|PageUp|
+ * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |PageUp|
  * |------+------+------+------+------+------|       |    | BOOT  |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |PageDn|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -74,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 [_LOWER] = LAYOUT(
-  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,  KC_F7,   KC_F8,    KC_F9,  KC_F10, KC_HOME,
-  _______, _______,   KC_UP, _______, _______, _______,                   _______, _______, _______,   KC_UP, _______, KC_END,
-  _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,                   _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP,
+  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, KC_HOME,
+  _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_END,
+  _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, KC_PGUP,
   _______, _______, _______, _______, _______, _______, XXXXXXX, QK_BOOT, _______, _______, _______, _______, _______, KC_PGDN,
                              _______, _______, _______, KC_DEL,  _______, _______, _______, _______
 ),
