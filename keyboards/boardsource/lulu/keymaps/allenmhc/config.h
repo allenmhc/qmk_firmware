@@ -26,9 +26,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEBOUNCE 10
 #define MAX_DEFERRED_EXECUTORS 10
 
-#define TAPPING_TERM_PER_KEY
-#define PERMISSIVE_HOLD
+#define TAPPING_TERM 150
+//#define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS
+#define SMTD_TIMEOUT_RELEASE_TERM TAPPING_TERM / 8
 #define ONESHOT_TAP_TOGGLE 10
 #define ONESHOT_TIMEOUT 500
 
