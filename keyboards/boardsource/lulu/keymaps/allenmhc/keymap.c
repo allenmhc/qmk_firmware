@@ -27,8 +27,8 @@ enum custom_keycodes {
 };
 #include "sm_td.h"
 
-#define RAISE TT(_RAISE)
-#define LOWER TT(_LOWER)
+#define RAISE OSL(_RAISE)
+#define LOWER OSL(_LOWER)
 #define OSM_SFT OSM(MOD_LSFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
