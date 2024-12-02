@@ -100,14 +100,9 @@ void _set_lower_layer_lights(void) {
   uint8_t OFFLAYERKEY_INDEX[1] = { 34 };
   _rgb_matrix_set_color_indices(OFFLAYERKEY_INDEX, 1, ledoff);
 
-  // Navigation keys
-  uint8_t NAVKEYS_INDICES[8] = { 14, 20, 21, 22, 49, 55, 56, 57 };
-  _rgb_matrix_set_color_indices(NAVKEYS_INDICES, 8, green);
-
-  // Home/End/PageUp/PageDn
-  uint8_t NAVJUMPKEYS_INDICES[4] = { 46, 47, 58, 59 };
-  const RGB violet = { r: 155, g: 38, b: 182 };
-  _rgb_matrix_set_color_indices(NAVJUMPKEYS_INDICES, 4, violet);
+  // Special Shift + number symbols layer
+  uint8_t SYMBOLKEYS_INDICES[10] = { 13, 14, 15, 16, 17, 52, 51, 50, 49, 48 };
+  _rgb_matrix_set_color_indices(SYMBOLKEYS_INDICES, 10, olive);
 
   // Special BOOT function
   uint8_t BOOTKEY_INDEX[1] = { 65 };
@@ -121,8 +116,17 @@ void _set_adjust_layer_lights(void) {
 
 void _set_qwerty_layer_lights(void) {
   // Navigation keys
-  uint8_t NAVKEYS_INDICES[4] = { 32, 33, 67, 68 };
+  uint8_t NAVKEYS_INDICES[4] = { 32, 24, 68, 59 };
   _rgb_matrix_set_color_indices(NAVKEYS_INDICES, 4, green);
+  
+  // Shift + Backspace + Enter + Space keys
+  uint8_t SPECIALKEYS_INDICES[4] = { 32, 31, 66, 67 };
+  _rgb_matrix_set_color_indices(SPECIALKEYS_INDICES, 4, maroon);
+  
+  // HomeRow Mod keys
+  uint8_t HRMKEYS_INDICES[8] = { 25, 26, 27, 28, 63, 62, 61, 60 };
+  const RGB violet = { r: 155, g: 38, b: 182 };
+  _rgb_matrix_set_color_indices(HRMKEYS_INDICES, 4, violet);
 }
 
 bool rgb_matrix_indicators_user(void) {
